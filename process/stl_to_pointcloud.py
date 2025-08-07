@@ -6,14 +6,14 @@ from pathlib import Path
 import argparse
 
 
-def stl_to_pointcloud(stl_file_path, output_path, num_points=2048, uniform_sampling=True):
+def stl_to_pointcloud(stl_file_path, output_path, num_points=125000, uniform_sampling=True):
     """
     从STL文件中采样点云并保存为.npy格式
     
     Args:
         stl_file_path (str): STL文件路径
         output_path (str): 输出.npy文件路径
-        num_points (int): 采样点数量，默认2048
+        num_points (int): 采样点数量，默认125,000
         uniform_sampling (bool): 是否使用均匀采样，默认True
     """
     try:
@@ -105,8 +105,8 @@ def main():
                        help="输入目录路径 (默认: data/raw)")
     parser.add_argument("--output_dir", type=str, default="data/pointcloud", 
                        help="输出目录路径 (默认: data/pointcloud)")
-    parser.add_argument("--num_points", type=int, default=2048, 
-                       help="采样点数量 (默认: 2048)")
+    parser.add_argument("--num_points", type=int, default=125000, 
+                       help="采样点数量 (默认: 125,000)")
     parser.add_argument("--sampling_method", type=str, default="uniform", 
                        choices=["uniform", "poisson"], 
                        help="采样方法: uniform 或 poisson (默认: uniform)")
